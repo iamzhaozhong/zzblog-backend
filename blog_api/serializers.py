@@ -1,17 +1,22 @@
 from rest_framework import serializers
-from blog_api.models import Author, Entry
+from blog.models import Post
+from django.conf import settings
 
 
-class EntrySerializer(serializers.HyperlinkedModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('category', 'id', 'title', 'slug', 'author',
+                  'excerpt', 'content', 'status')
+
+
+class UserRegisterSerializer(serializers.ModelSerializer):
+
+    email = serializers.EmailField(required=True)
+    username = serializers.CharField(required=True)
+    password = serializers.CharField(min_length=8, write_only=True)
 
     class Meta:
-        model = Entry
-        fields = ['title', 'released' , 'description', 'director']
-
-
-class AuthorSerializer(serializers.HyperlinkedModelSerializer):
-    movies = serializers.StringRelatedField(many=True)
-
-    class Meta:
-        model = Author
-        fields = ['name', 'access_level', 'entries']
+        model = settings.AUTH_USER_MODEL
+        fields = ('email', 'user_name', 'first_name')
+        extra_kwargs = {'password': {'write_only': True}}
