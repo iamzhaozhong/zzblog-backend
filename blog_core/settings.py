@@ -21,7 +21,7 @@ SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be us
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://cryptic-headland-38418.herokuapp.com"]
 
 # Application definition
 
@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "blog",
     "blog_api",
-    "corsheaders",
+    # "corsheaders",
     "users",
     "rest_framework_simplejwt.token_blacklist",
 ]
@@ -132,9 +132,9 @@ REST_FRAMEWORK = {
     ],
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000"
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000"
+# ]
 
 # Custom user model
 AUTH_USER_MODEL = "users.NewUser"
