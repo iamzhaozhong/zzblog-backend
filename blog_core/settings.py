@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "blog",
     "blog_api",
-    # "corsheaders",
+    "corsheaders",
     "users",
     "rest_framework_simplejwt.token_blacklist",
 ]
@@ -133,9 +133,7 @@ REST_FRAMEWORK = {
     ],
 }
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000"
-# ]
+CORS_ALLOWED_ORIGINS = [os.environ['ZZ_IP']]
 
 # Custom user model
 AUTH_USER_MODEL = "users.NewUser"
