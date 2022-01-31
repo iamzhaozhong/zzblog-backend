@@ -19,7 +19,7 @@ BASE_DIRS = Path(__file__).resolve().parent.parent
 SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "blog",
     "blog_api",
-    "corsheaders",
     "users",
     "rest_framework_simplejwt.token_blacklist",
 ]
@@ -132,8 +131,6 @@ REST_FRAMEWORK = {
     'rest_framework_simplejwt.authentication.JWTAuthentication'
     ],
 }
-
-CORS_ALLOWED_ORIGINS = [os.environ['ZZ_IP']]
 
 # Custom user model
 AUTH_USER_MODEL = "users.NewUser"
